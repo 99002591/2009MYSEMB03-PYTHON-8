@@ -31,6 +31,6 @@ bo = [
 # print("Solving...")
 # time.sleep(3)
 solver.solve(bo_1)
-# solver.print_board(bo_1)
+solver.print_board(bo_1)
 
 
