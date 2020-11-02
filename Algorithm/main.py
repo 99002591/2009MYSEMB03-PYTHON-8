@@ -26,9 +26,11 @@ bo = [
     [0, 4, 9, 2, 0, 6, 0, 0, 7]
 ]
 
-solver.print_board(bo_1)
-time.sleep(1)
-print("Solving...")
-time.sleep(3)
+# solver.print_board(bo_1)
+# time.sleep(1)
+# print("Solving...")
+# time.sleep(3)
 solver.solve(bo_1)
-solver.print_board(bo_1)
+# solver.print_board(bo_1)
+
+
