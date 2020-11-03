@@ -116,9 +116,6 @@ class Cube:
             win.blit(text, (x + (gap/2 - text.get_width()/2),
                             y + (gap/2 - text.get_height()/2)))
 
-        if self.selected:
-            pygame.draw.rect(win, (255, 0, 0), (x, y, gap, gap), 3)
-
     def draw_change(self, win, g=True):
         fnt = pygame.font.SysFont("comicsans", 40)
 
@@ -132,7 +129,7 @@ class Cube:
         win.blit(text, (x + (gap / 2 - text.get_width() / 2),
                         y + (gap / 2 - text.get_height() / 2)))
         if g:
-            pygame.draw.rect(win, (0, 255, 0), (x, y, gap, gap), 3)
+            pygame.draw.rect(win, (0, 170, 100), (x, y, gap, gap), 3)
         else:
             pygame.draw.rect(win, (255, 0, 0), (x, y, gap, gap), 3)
 
