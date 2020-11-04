@@ -6,15 +6,15 @@ pygame.font.init()
 
 class Grid:
     board = [
-        [7, 8, 0, 4, 0, 0, 1, 2, 0],
-        [6, 0, 0, 0, 7, 5, 0, 0, 9],
-        [0, 0, 0, 6, 0, 1, 0, 7, 8],
-        [0, 0, 7, 0, 4, 0, 2, 6, 0],
-        [0, 0, 1, 0, 5, 0, 9, 3, 0],
-        [9, 0, 4, 0, 6, 0, 0, 0, 5],
-        [0, 7, 0, 3, 0, 0, 0, 1, 2],
-        [1, 2, 0, 0, 0, 7, 4, 0, 0],
-        [0, 4, 9, 2, 0, 6, 0, 0, 7]
+        [2, 0, 4, 0, 0, 0, 0, 6, 7],
+        [3, 0, 0, 4, 7, 0, 0, 0, 5],
+        [1, 5, 0, 8, 2, 0, 0, 0, 3],
+        [0, 0, 6, 0, 0, 0, 0, 3, 1],
+        [8, 0, 2, 1, 0, 5, 6, 0, 4],
+        [4, 1, 0, 0, 0, 0, 9, 0, 0],
+        [7, 0, 0, 0, 8, 0, 0, 4, 6],
+        [6, 0, 0, 0, 1, 2, 0, 0, 0],
+        [9, 3, 0, 0, 0, 0, 7, 1, 0]
     ]
 
     def __init__(self, rows, cols, width, height, win):
@@ -26,7 +26,6 @@ class Grid:
         self.height = height
         self.model = None
         self.update_model()
-        self.selected = None
         self.win = win
 
     def update_model(self):
@@ -41,22 +40,15 @@ class Grid:
                 thick = 4
             else:
                 thick = 1
-            pygame.draw.line(self.win, (0, 0, 0), (0, i*gap),
+            pygame.draw.line(self.win, (40, 40, 40), (0, i*gap),
                              (self.width, i*gap), thick)
-            pygame.draw.line(self.win, (0, 0, 0), (i * gap, 0),
+            pygame.draw.line(self.win, (40, 40, 40), (i * gap, 0),
                              (i * gap, self.height), thick)
 
         # Draw Cubes
         for i in range(self.rows):
             for j in range(self.cols):
                 self.cubes[i][j].draw(self.win)
-
-    def is_finished(self):
-        for i in range(self.rows):
-            for j in range(self.cols):
-                if self.cubes[i][j].value == 0:
-                    return False
-        return True
 
     def solve_gui(self):
         self.update_model()
@@ -179,18 +171,18 @@ def redraw_window(win, board):
 
 
 def main():
-    win = pygame.display.set_mode((540, 600))
+    win = pygame.display.set_mode((540, 540))
     pygame.display.set_caption("Sudoku")
     board = Grid(9, 9, 540, 540, win)
-    
+
     run = True
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    board.solve_gui()
+                # if event.key == pygame.K_SPACE:
+                board.solve_gui()
 
             redraw_window(win, board)
             pygame.display.update()
