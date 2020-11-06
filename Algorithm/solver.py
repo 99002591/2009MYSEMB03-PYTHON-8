@@ -1,5 +1,6 @@
 def solve(bo):
     """
+
     Solves a sudoku board using backtracking
     :param bo: 2d list of ints
     :return: solution
@@ -24,6 +25,7 @@ def solve(bo):
 
 def valid(bo, pos, num):
     """
+
     Returns if the attempted move is valid
     :param bo: 2d list of ints
     :param pos: (row, col)
@@ -56,6 +58,7 @@ def valid(bo, pos, num):
 
 def find_empty(bo):
     """
+
     finds an empty space in the board
     :param bo: partially complete board
     :return: (int, int) row col
@@ -71,6 +74,7 @@ def find_empty(bo):
 
 def print_board(bo):
     """
+    
     prints the board
     :param bo: 2d List of ints
     :return: None

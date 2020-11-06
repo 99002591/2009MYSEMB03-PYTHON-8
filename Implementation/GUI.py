@@ -1,6 +1,5 @@
 # GUI.py
 import pygame
-import time
 pygame.font.init()
 
 
@@ -18,17 +17,18 @@ class Grid:
     ]
 
 
-    '''
-    @param: self
-            rows: Number of rows
-            cols: Number of coloumns
-            width: Width of each face
-            height: Height of each face
-            win: Object of the main display window
-    @return : none
-    @def : Initializses the class object
-    '''
     def __init__(self, rows, cols, width, height, win):
+        '''
+
+        :param: self
+                rows: Number of rows
+                cols: Number of coloumns
+                width: Width of each face
+                height: Height of each face
+                win: Object of the main display window
+        :return : none
+        :def : Initializses the class object
+        '''
         self.rows = rows
         self.cols = cols
         self.cubes = [[Cube(self.board[i][j], i, j, width, height)
@@ -39,21 +39,26 @@ class Grid:
         self.update_model()
         self.win = win
 
-    '''
-    @param :   self
-    @return :  None
-    @def : Updates the model rendered on screen after every operation
-    '''
+    
     def update_model(self):
+        '''
+
+        :param :   self
+        :return :  None
+        :def : Updates the model rendered on screen after every operation
+        '''
         self.model = [[self.cubes[i][j].value for j in range(
             self.cols)] for i in range(self.rows)]
-    '''
-    @param :  self
-    @return : None
-    @def : Draws the cross-grid on the display window
-           and draws cubes and fills them
-    '''
+    
     def draw(self):
+        '''
+
+        :param :  self
+        :return : None
+        :def : Draws the cross-grid on the display window
+            and draws cubes and fills them
+        '''
+
         # Draw Grid Lines
         gap = self.width / 9
         for i in range(self.rows+1):
@@ -71,17 +76,17 @@ class Grid:
             for j in range(self.cols):
                 self.cubes[i][j].draw(self.win)
 
-    '''
-    @param : self
-    @return : boolean
-    @def :  calls the find_empty() function 
-            calls the valid() function
-            does this for all the cells in the grid
-            calls update_model() to visualise every step
-            Updates the final 2D-list of the puzzle and 
-            returns True only when the puzzle is solved.
-    '''
     def solve_gui(self):
+        '''
+        @param : self
+        @return : boolean
+        @def :  calls the find_empty() function 
+                calls the valid() function
+                does this for all the cells in the grid
+                calls update_model() to visualise every step
+                Updates the final 2D-list of the puzzle and 
+                returns True only when the puzzle is solved.
+        '''
         self.update_model()
         find = find_empty(self.model)
         if not find:
