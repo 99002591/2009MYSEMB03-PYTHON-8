@@ -117,9 +117,19 @@ class Grid:
 class Cube:
     rows = 9
     cols = 9
-
+    
     def __init__(self, value, row, col, width, height):
+        """
 
+            :param : self
+                    value
+                    row
+                    col
+                    width
+                    height
+            :return : None
+            :def :  Instance of the class
+        """
         self.value = value
         self.temp = 0
         self.row = row
@@ -129,7 +139,13 @@ class Cube:
         self.selected = False
 
     def draw(self, win):
+        """
 
+        :param :  self
+        :return : None
+        :def : Draws the grid lines over a already 
+               rendered window
+        """
         fnt = pygame.font.SysFont("comicsans", 40)
 
         gap = self.width / 9
@@ -145,7 +161,15 @@ class Cube:
                             y + (gap/2 - text.get_height()/2)))
 
     def draw_change(self, win, g=True):
+        """
 
+        :param :  self
+                  window
+                  g = True
+        :return : None
+        :def :   Draws the bounding rectangle on an
+                 actively updating cells
+        """
         fnt = pygame.font.SysFont("comicsans", 40)
 
         gap = self.width / 9
