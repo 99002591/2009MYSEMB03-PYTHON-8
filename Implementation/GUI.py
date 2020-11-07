@@ -16,9 +16,8 @@ class Grid:
         [9, 3, 0, 0, 0, 0, 7, 1, 0]
     ]
 
-
     def __init__(self, rows, cols, width, height, win):
-        '''
+        """
 
         :param: self
                 rows: Number of rows
@@ -27,8 +26,8 @@ class Grid:
                 height: Height of each face
                 win: Object of the main display window
         :return : none
-        :def : Initializses the class object
-        '''
+        :def : Intance of the class
+        """
         self.rows = rows
         self.cols = cols
         self.cubes = [[Cube(self.board[i][j], i, j, width, height)
@@ -39,25 +38,24 @@ class Grid:
         self.update_model()
         self.win = win
 
-    
     def update_model(self):
-        '''
+        """
 
         :param :   self
         :return :  None
         :def : Updates the model rendered on screen after every operation
-        '''
+        """
         self.model = [[self.cubes[i][j].value for j in range(
             self.cols)] for i in range(self.rows)]
-    
+
     def draw(self):
-        '''
+        """
 
         :param :  self
         :return : None
         :def : Draws the cross-grid on the display window
             and draws cubes and fills them
-        '''
+        """
 
         # Draw Grid Lines
         gap = self.width / 9
@@ -77,16 +75,16 @@ class Grid:
                 self.cubes[i][j].draw(self.win)
 
     def solve_gui(self):
-        '''
+        """
         @param : self
         @return : boolean
-        @def :  calls the find_empty() function 
+        @def :  calls the find_empty() function
                 calls the valid() function
                 does this for all the cells in the grid
                 calls update_model() to visualise every step
-                Updates the final 2D-list of the puzzle and 
+                Updates the final 2D-list of the puzzle and
                 returns True only when the puzzle is solved.
-        '''
+        """
         self.update_model()
         find = find_empty(self.model)
         if not find:
@@ -121,6 +119,7 @@ class Cube:
     cols = 9
 
     def __init__(self, value, row, col, width, height):
+
         self.value = value
         self.temp = 0
         self.row = row
@@ -130,6 +129,7 @@ class Cube:
         self.selected = False
 
     def draw(self, win):
+
         fnt = pygame.font.SysFont("comicsans", 40)
 
         gap = self.width / 9
@@ -145,6 +145,7 @@ class Cube:
                             y + (gap/2 - text.get_height()/2)))
 
     def draw_change(self, win, g=True):
+
         fnt = pygame.font.SysFont("comicsans", 40)
 
         gap = self.width / 9
@@ -162,13 +163,35 @@ class Cube:
             pygame.draw.rect(win, (255, 0, 0), (x, y, gap, gap), 3)
 
     def set(self, val):
+        """
+
+        :param :  self
+                  val
+        :return : None
+        :def :  Value setter
+        """
         self.value = val
 
     def set_temp(self, val):
+        """
+
+        :param :  self
+                  val
+        :return : None
+        :def :  Temporary value setter
+        """
         self.temp = val
 
 
 def find_empty(bo):
+    """
+
+    :param :  bo (Unsolved board, 2D List)
+    :return : tuple of index
+    :def :    finds empty cells in the unsolved puzzle
+              represented by 0s, and return a tuple 
+              of their indexes
+    """
     for i in range(len(bo)):
         for j in range(len(bo[0])):
             if bo[i][j] == 0:
@@ -178,6 +201,19 @@ def find_empty(bo):
 
 
 def valid(bo, num, pos):
+    """
+
+    :param  : bo (Unsolved board, 2D List)
+              num (The number that is being validated)
+              pos (The index of the cell being checked)
+    :return : boolean
+              True > if the number is valid
+              False > if the number is invalid
+    :def    : This has 3 subsequent main for loops that 
+              check for the validity of a number at a cell
+              in the order ROW > COL > BOX
+    """
+
     # Check row
     for i in range(len(bo[0])):
         if bo[pos[0]][i] == num and pos[1] != i:
@@ -201,6 +237,13 @@ def valid(bo, num, pos):
 
 
 def redraw_window(win, board):
+    """
+
+    :param  : window
+              board (Object of the class Grid)
+    :return : None
+    :def    : Callback function for draw() 
+    """
     win.fill((255, 255, 255))
     # Draw grid and board
     board.draw()
