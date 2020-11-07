@@ -99,7 +99,7 @@ class Grid:
                 self.cubes[row][col].draw_change(self.win, True)
                 self.update_model()
                 pygame.display.update()
-                pygame.time.delay(1)
+                pygame.time.delay(30)
 
                 if self.solve_gui():
                     return True
@@ -109,7 +109,7 @@ class Grid:
                 self.update_model()
                 self.cubes[row][col].draw_change(self.win, False)
                 pygame.display.update()
-                pygame.time.delay(100)
+                pygame.time.delay(30)
 
         return False
 
@@ -158,9 +158,9 @@ class Cube:
         win.blit(text, (x + (gap / 2 - text.get_width() / 2),
                         y + (gap / 2 - text.get_height() / 2)))
         if g:
-            pygame.draw.rect(win, (0, 170, 100), (x, y, gap, gap), 3)
+            pygame.draw.rect(win, (0, 255, 100), (x, y, gap, gap), 6)
         else:
-            pygame.draw.rect(win, (255, 0, 0), (x, y, gap, gap), 3)
+            pygame.draw.rect(win, (255, 0, 0), (x, y, gap, gap), 6)
 
     def set(self, val):
         """
