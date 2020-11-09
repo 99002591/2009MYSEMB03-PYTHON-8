@@ -25,7 +25,7 @@ the steps taken by the algorithm to solve the puzzle, in real time. </br>
     >   The program GUI.py in the {Implementation} directory, leverages the pygame library to
     >   show, in real time, the steps being taken by the algorithm to solve the Sudoko
 
-### Scope of Improvement
+### Scope of Improvement 
 
     > - Addition of a checking mechanism to see if a puzzle is solvable before actually solving it.
     > - Addition of a checking mechanism to check for invalid entries in a given puzzle like repetition of numbers.
