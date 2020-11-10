@@ -20,9 +20,5 @@ jobs:
       run : python -m pip install --upgrade pip
         pip install pygame
     - name: BUILD
-        try:
-        os.environ["DISPLAY"]
-      except:
-        os.environ["SDL_VIDEODRIVER"] = "dummy"
-      run: 
+      run: python3 Algorithm/main.py
         python3 Implementation/GUI.py
