@@ -74,7 +74,7 @@ def find_empty(bo):
 
 def print_board(bo):
     """
-    
+
     prints the board
     :param bo: 2d List of ints
     :return: None
