@@ -17,5 +17,4 @@ jobs:
         # Optional - x64 or x86 architecture, defaults to x64
         architecture: 'x64' 
     - name: Display Python version
-      run: python3 Algorithm/main.py
-           python3 Implementation/GUI.py
+      run: python3 Implementation/GUI.py

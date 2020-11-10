@@ -1,5 +1,6 @@
-# GUI.py
 import pygame
+import sys
+sys.path.append(".")
 pygame.font.init()
 from Cube import *
 
@@ -76,9 +77,9 @@ class Grid:
 
     def solve_gui(self):
         """
-        @param : self
-        @return : boolean
-        @def :  calls the find_empty() function
+        :param : self
+        :return : boolean
+        :def :  calls the find_empty() function
                 calls the valid() function
                 does this for all the cells in the grid
                 calls update_model() to visualise every step
